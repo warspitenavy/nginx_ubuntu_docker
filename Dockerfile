@@ -11,8 +11,10 @@ RUN apt install -y nginx
 
 WORKDIR /root
 
-EXPOSE 80
+EXPOSE 22 80 443
 
 COPY ./html /usr/share/nginx/html
+COPY ./configurations/nginx.conf /etc/nginx
+COPY ./configurations/ssl /etc/nginx/ssl
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
